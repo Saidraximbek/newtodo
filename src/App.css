@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@keyframes fireGlow {
+  0% {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4500, 0 0 20px #ff8c00,
+      0 0 30px #ff6347;
+  }
+  50% {
+    text-shadow: 0 0 10px #ff4500, 0 0 20px #ff6347, 0 0 30px #ff8c00,
+      0 0 40px #ff0000;
+  }
+  100% {
+    text-shadow: 0 0 5px #ff0000, 0 0 10px #ff4500, 0 0 20px #ff8c00,
+      0 0 30px #ff6347;
+  }
+}
+
+.gamer-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: #2e0101;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  text-align: center;
+  animation: fireGlow 3s infinite alternate;
+}
