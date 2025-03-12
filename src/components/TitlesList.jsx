@@ -1,10 +1,10 @@
-import Item from "./item";
+import ItemTodo from "./ItemTodo";
 
 function TitlesList({ titles, deleteTitle }) {
   return (
     <>
       {titles.map((i) => {
-        return <Item i={i} key={i.id} deleteTitle={deleteTitle} />;
+        return <ItemTodo i={i} key={i.id} deleteTitle={deleteTitle} />;
       })}
     </>
   );
