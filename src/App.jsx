@@ -3,10 +3,15 @@ import "./App.css";
 import TitlesList from "./components/TitlesList.jsx";
 import Form from "./components/Form.jsx";
 
+const initialValue = () => {
+  return JSON.parse(localStorage.getItem("todos")) || [];
+};
+
 function App() {
   const [text, setText] = useState("");
-  const [titles, setTitles] = useState([]);
+  const [titles, setTitles] = useState(initialValue());
   const [error, setError] = useState(false);
+  const [btnText, setBtnText] = useState("Add");
   useEffect(() => {
     if (text.length > 4) {
       setError(false);
@@ -17,6 +22,10 @@ function App() {
       setError(false);
     }, 5000);
   }, [error]);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(titles));
+  }, [titles]);
 
   const deleteTitle = (id) => {
     const filteredTitles = titles.filter((t) => t.id !== id);
@@ -52,10 +61,19 @@ function App() {
           text={text}
           setText={setText}
           error={error}
+          btnText={btnText}
+          setTitles={setTitles}
         />
         {error && <p className="p-[25px] mt-[-25px] text-error">{error}</p>}
         <ul className="flex flex-col p-[20px] gap-5 max-h-[400px] overflow-clip space-y-4 overflow-y-auto overflow-x-hidden">
-          <TitlesList titles={titles} deleteTitle={deleteTitle} text={text} />
+          <TitlesList
+            titles={titles}
+            deleteTitle={deleteTitle}
+            setBtnText={setBtnText}
+            text={text}
+            setText={setText}
+            setTitles={setTitles}
+          />
         </ul>
       </div>
     </Fragment>

@@ -1,4 +1,7 @@
-function Form({ handleSubmit, text, setText }) {
+import { useState } from "react";
+
+function Form({ handleSubmit, text, setText, btnText }) {
+  
   return (
     <>
       <form
@@ -20,7 +23,7 @@ function Form({ handleSubmit, text, setText }) {
           className="p-1 text-lg font-bold text-white bg-black border border-red-500 rounded-lg shadow-lg shadow-red-500/50 transition-all duration-300 hover:bg-red-900 hover:shadow-red-600/50 focus:ring-4 focus:ring-red-500/50"
           type="submit"
         >
-          Add
+          {btnText}
         </button>
       </form>
     </>
