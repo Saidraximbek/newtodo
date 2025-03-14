@@ -2,7 +2,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { IoGameControllerOutline } from "react-icons/io5";
 import { FaRegEdit } from "react-icons/fa";
 import Modal from "./Modal.jsx";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function Item({ i, deleteTitle, setText, setBtnText, titles, setTitles }) {
   const [showModal, setShowModal] = useState(false);
@@ -12,13 +12,17 @@ function Item({ i, deleteTitle, setText, setBtnText, titles, setTitles }) {
     setBtnText("Edit");
 
     const filterEdit = titles.filter((d) => {
-      setBtnText("Add");
+
       return d.id !== newId;
     });
     console.log(filterEdit);
 
     setTitles(filterEdit);
   }
+
+  useEffect(()=>{
+          setBtnText("Add");
+  },[getEditVal])
 
   return (
     <div className="flex gap-2">
